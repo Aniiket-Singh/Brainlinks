@@ -5,7 +5,7 @@ import mongoose from "mongoose"
 import { JWT_PASSWORD } from "./config"
 
 mongoose.connect("mongodb+srv://aniketsingh2151:WoHozp69WVCRZffn@cluster0.f8dop.mongodb.net/brainlinks")
-import { contentModel, UserModel } from "./db"
+import { ContentModel, UserModel } from "./db"
 import { ExitStatus } from "typescript"
 import { userMiddleware } from "./middleware"
 
@@ -59,7 +59,7 @@ app.post("/api/v1/content", userMiddleware, async (req: Request,res: Response) =
     const link = req.body.link;
     const type = req.body.type;
 
-    await contentModel.create({
+    await ContentModel.create({
         link,
         type,
         //@ts-ignore
@@ -75,12 +75,22 @@ app.post("/api/v1/content", userMiddleware, async (req: Request,res: Response) =
 app.get("/api/v1/content", userMiddleware, async (req:Request, res:Response)=> {
     //@ts-ignore
     const userId = req.userId
-    const content = await contentModel.findOne({
+    const content = await ContentModel.findOne({
         userId
-    })
+    }).populate("userId", "username")
 
     res.json({
         content
+    })
+})
+
+app.delete("/api/v1/content", userMiddleware, async (req: Request, res: Response) => {
+    const contentId = req.body.contentId;
+
+    await ContentModel.deleteOne({
+        contentId,
+        //@ts-ignore
+        userId: req.userId
     })
 })
 
