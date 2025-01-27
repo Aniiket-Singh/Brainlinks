@@ -57,11 +57,11 @@ app.post("/api/v1/signin", async (req: Request,res: Response) =>  {
 
 app.post("/api/v1/content", userMiddleware, async (req: Request,res: Response) => {
     const link = req.body.link;
-    const type = req.body.type;
+    const title = req.body.title;
 
     await ContentModel.create({
         link,
-        type,
+        title,
         //@ts-ignore
         userId: req.userId,
         tags: []
@@ -84,6 +84,20 @@ app.get("/api/v1/content", userMiddleware, async (req:Request, res:Response)=> {
     })
 })
 
+app.get("/api/v1/content/title", userMiddleware, async (req: Request, res: Response) => {
+    //@ts-ignore
+    const userId = req.userId;
+    const searchValue = req.query.searchValue;
+
+    const content = await ContentModel.find({
+        userId,
+        link: {
+            $regex: searchValue
+        }
+    }).populate("userId", "username")
+    res.json({content})
+})
+
 app.delete("/api/v1/content", userMiddleware, async (req: Request, res: Response) => {
     const contentId = req.body.contentId;
 
@@ -92,6 +106,10 @@ app.delete("/api/v1/content", userMiddleware, async (req: Request, res: Response
         //@ts-ignore
         userId: req.userId
     })
+})
+
+app.post("/api/v1/brain/share", userMiddleware, async (req: Request, res: Response) => {
+
 })
 
 app.listen(3000);   
