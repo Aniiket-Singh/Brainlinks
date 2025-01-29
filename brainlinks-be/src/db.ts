@@ -1,4 +1,4 @@
-import mongoose, {model, Schema} from "mongoose"
+import mongoose, {model, Mongoose, Schema} from "mongoose"
 // mongoose.connect("mongodb+srv://aniketsingh2151:WoHozp69WVCRZffn@cluster0.f8dUp.mongodb.net/")
 
 
@@ -21,3 +21,9 @@ const contentSchema = new Schema ({
 
 export const ContentModel = model("Content", contentSchema)
 
+const linkSchema = new Schema ({
+    hash: String,
+    userId: {type: mongoose.Types.ObjectId, required: true, unique: true, ref: 'User'}
+})
+
+export const LinkModel = model("Link", linkSchema)

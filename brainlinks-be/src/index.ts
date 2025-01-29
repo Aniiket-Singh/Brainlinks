@@ -3,9 +3,10 @@ import jwt from "jsonwebtoken"
 import mongoose from "mongoose"
 
 import { JWT_PASSWORD } from "./config"
+import { hashgen } from "./hashgen"
 
 mongoose.connect("mongodb+srv://aniketsingh2151:WoHozp69WVCRZffn@cluster0.f8dop.mongodb.net/brainlinks")
-import { ContentModel, UserModel } from "./db"
+import { ContentModel, UserModel, LinkModel } from "./db"
 import { ExitStatus } from "typescript"
 import { userMiddleware } from "./middleware"
 
@@ -109,7 +110,82 @@ app.delete("/api/v1/content", userMiddleware, async (req: Request, res: Response
 })
 
 app.post("/api/v1/brain/share", userMiddleware, async (req: Request, res: Response) => {
+    const share = req.body.share;
+    if(share){
+    //need to look up if return statement after if-if block's end is really necessary
+        const existingLink = await LinkModel.findOne({
+            //@ts-ignore
+            userId: req.userId
+        })
 
+        if(existingLink){
+            res.json({
+                hash: existingLink.hash
+            })
+            return;
+        }
+        const hash = hashgen(10)
+        await LinkModel.create({
+            //@ts-ignore
+            userId: req.userId,
+            hash
+        })
+
+        res.json({
+            hash
+        })
+        return;
+    }
+    else{
+        await LinkModel.deleteOne({
+            //@ts-ignore
+            userId: req.userId
+        })
+    
+        res.json({
+            message: "Removed link"
+        })
+    }
+    
 })
+
+app.get("api/v1/brain/:shareLink", async (req: Request, res: Response) => {
+    const hash = req.params.shareLink;
+
+    const link = await LinkModel.findOne({
+        hash
+    })
+
+    if(!link){
+        res.status(411).json({
+            message: "The shareable link in the URL doesnt exist or has expired!"
+        })
+    return;
+    }
+    
+    const content = await ContentModel.find({
+        userId: link.userId    
+    })
+
+    console.log(link)
+
+    const user = await UserModel.findOne({
+        _id: link.userId
+    })
+
+    if(!user){
+        res.status(411).json({
+            message: "Link and its corresponding content is validated, however userId stored in these databases is not validated in the User Database"
+        })
+
+    return;
+    }
+
+    res.json({
+        username: user.username,
+        content
+    })
+})
+
 
 app.listen(3000);   
