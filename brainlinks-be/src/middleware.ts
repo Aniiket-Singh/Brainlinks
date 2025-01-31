@@ -9,7 +9,7 @@ export const userMiddleware = (req: Request, res: Response, next: NextFunction) 
     const decoded = jwt.verify(header as string, JWT_PASSWORD);
 
     if(decoded){
-        //@ts-ignore
+        //@ts-ignore    
         req.userId = decoded.id;
         next() 
     }else{
