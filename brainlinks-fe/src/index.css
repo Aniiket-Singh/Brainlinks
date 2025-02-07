@@ -4,9 +4,9 @@
 /* @config "../tailwind.config.js" */
 
 @theme {
-  --color-purple-300: #E0E7Fe;
-  --color-purple-500: #3E38A7;
-  --color-purple-600: #5046E4;
+  --color-blue-300: #E0E7Fe;
+  --color-blue-500: #3E38A7;
+  --color-blue-600: #5046E4;
 } 
 
 
