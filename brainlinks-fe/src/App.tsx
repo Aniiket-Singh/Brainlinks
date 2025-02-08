@@ -1,16 +1,15 @@
 import './App.css'
+import { Button } from './components/ui/Button'
 
 function App() {
 
 
   return (
     <>
-      <h6>
-        <div className='text-blue-500'>
-        Vite + React
-        </div>
-      </h6>
-
+      <Button size ="sm" variant="primary" text="Share"/>
+      <Button size ="md" variant="secondary" text="Share"/>
+      <Button size ="lg" variant="primary" text="Share"/>
+      
     </>
   )
 }
