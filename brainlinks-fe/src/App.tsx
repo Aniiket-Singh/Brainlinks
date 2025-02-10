@@ -7,8 +7,8 @@ function App() {
   return (
     <>
       <Button size ="sm" variant="primary" text="Share"/>
-      <Button size ="md" variant="secondary" text="Share"/>
-      <Button size ="lg" variant="primary" text="Share"/>
+      <Button size ="md" variant="primary" text="Share"/>
+      <Button size ="lg" variant="secondary" text="Share"/>
       
     </>
   )
