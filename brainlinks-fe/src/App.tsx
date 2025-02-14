@@ -7,7 +7,7 @@ function App() {
 
   return ( 
     <>
-      <Button startIcon = {<PlusIcon size = {"lg"} />} size ="sm" variant="primary" text="Share"/>
+      <Button startIcon = {<PlusIcon size = {iconSizeVariants["lg"]} />} size ="sm" variant="primary" text="Share"/>
       <Button size ="md" variant="primary" text="Share"/>
       <Button size ="lg" variant="secondary" text="Share"/>
       
