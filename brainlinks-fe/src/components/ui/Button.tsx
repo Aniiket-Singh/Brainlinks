@@ -1,9 +1,11 @@
+import { ReactElement } from "react";
+
 interface ButtonProps {
     variant: "primary" | "secondary";
     size: "sm"  | "md" | "lg";
     text: string;
-    startIcon?: any; //Upgrade any to suitable types later
-    endIcon?: any;
+    startIcon?: ReactElement; //Upgrade any to suitable types later
+    endIcon?: ReactElement;
     onClick?: () => void
 }
 
