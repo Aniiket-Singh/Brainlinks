@@ -1,15 +1,18 @@
 import './App.css'
 import { Button } from './components/ui/Button'
-import { iconSizeVariants } from './icons'
+
 import { PlusIcon } from './icons/Plusicon'
+import { ShareIcon } from './icons/Shareicon'
 function App() {
 
 
   return ( 
     <>
-      <Button startIcon = {<PlusIcon size = {iconSizeVariants["lg"]} />} size ="sm" variant="primary" text="Share"/>
-      <Button size ="md" variant="primary" text="Share"/>
+    <div>
+      <Button startIcon = {<PlusIcon size = "md" />} endIcon={ <ShareIcon size = "md" /> } size ="lg" variant="primary" text="Add Content"/>
       <Button size ="lg" variant="secondary" text="Share"/>
+    </div>
+
       
     </>
   )
