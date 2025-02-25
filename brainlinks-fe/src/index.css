@@ -4,11 +4,11 @@
 /* @config "../tailwind.config.js" */
 
 @theme {
-  --color-purple-300: #E0E7Fe;
-  --color-purple-500: #3E38A7;
+  --color-purple-100: #E0E7Fe;
+  --color-purple-200: #3E38A7;
   --color-purple-600: #5046E4;
-  --color-gray-300: #EEEEEF;
-  --color-gray-500: #E6E9ED;
+  --color-gray-100: #EEEEEF;
+  --color-gray-200: #E6E9ED;
   --color-gray-600: #95989C;
 } 
 

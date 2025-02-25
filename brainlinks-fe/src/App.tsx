@@ -3,6 +3,8 @@ import { Button } from './components/ui/Button'
 
 import { PlusIcon } from './icons/Plusicon'
 import { ShareIcon } from './icons/Shareicon'
+import { Card } from './components/ui/Card'
+
 function App() {
 
 
@@ -11,6 +13,10 @@ function App() {
     <div>
       <Button startIcon = {<PlusIcon size = "md" />} endIcon={ <ShareIcon size = "md" /> } size ="lg" variant="primary" text="Add Content"/>
       <Button size ="lg" variant="secondary" text="Share"/>
+      
+      <Card/>
+      <Button size ="lg" variant="secondary" text="Share"/>
+
     </div>
 
       

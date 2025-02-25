@@ -17,7 +17,7 @@ const variantStyles : Record<Variants, string> = {
     "secondary" : "bg-purple-300 text-purple-600"
 }
 
-const defaultStyles = "rounded-md"
+const defaultStyles = "rounded-md inline-flex items-center"
 
 const sizeStyles = {
     "sm" : "py-1 px-2",
@@ -26,7 +26,7 @@ const sizeStyles = {
 }
 
 export const Button =(props: ButtonProps) => {
-    return <button className = {`${variantStyles[props.variant]} ${defaultStyles} ${sizeStyles[props.size]} inline-flex items-center`}>
+    return <button className = {`${variantStyles[props.variant]} ${defaultStyles} ${sizeStyles[props.size]}`}>
         {props.startIcon && <div className="pr-2">{props.startIcon} </div>} 
         {<div>{props.text}</div>} 
         {props.endIcon && <div className="pl-2">{props.endIcon} </div>}
