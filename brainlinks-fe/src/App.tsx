@@ -11,11 +11,26 @@ function App() {
   return ( 
     <>
     <div>
-      <Button startIcon = {<PlusIcon size = "md" />} endIcon={ <ShareIcon size = "md" /> } size ="lg" variant="primary" text="Add Content"/>
-      <Button size ="lg" variant="secondary" text="Share"/>
+      <Button 
+        startIcon = {<PlusIcon size = "md" />} 
+        endIcon={ <ShareIcon size = "md" /> } 
+        size ="lg" 
+        variant="primary" 
+        text="Add Content"
+      />
+      <Button
+        size ="lg" 
+        variant="secondary" 
+        text="Share"
+      />
       
       <Card/>
-      <Button size ="lg" variant="secondary" text="Share"/>
+      
+      <Button 
+        size ="lg" 
+        variant="secondary" 
+        text="Share"
+      />
 
     </div>
 
