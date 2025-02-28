@@ -24,7 +24,7 @@ function App() {
         text="Share"
       />
       
-      <Card title="Feline" type='youtube' link='https://www.youtube.com/embed/V-zpTtQAlKw'  />
+      <Card title="Feline" type='youtube' link='https://youtu.be/yxDpF3XqpV4?si=VSQHcoLeVORPlsoj'  />
       
       <Button 
         size ="lg" 

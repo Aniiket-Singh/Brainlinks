@@ -8,6 +8,12 @@ interface CardProps {
     type: "twitter" | "youtube"
 }
 
+function convertToEmbedUrl (youtubeUrl: string)  {
+    const match = youtubeUrl.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|v\/|shorts\/|live\/|playlist\?list=))([\w-]+)/);
+    return match ? `https://www.youtube.com/embed/${match[1]}` : undefined;
+}
+
+
 export const Card = ({title, link, type}: CardProps) => {
     return <div> 
         <span  className="p-4 bg-white rounded-md shadow-md border-slate-200 border-1 block max-w-240   ">
@@ -29,7 +35,7 @@ export const Card = ({title, link, type}: CardProps) => {
 
     
             <div className="pt-2"> 
-                {type === "youtube" && <iframe width="100%" src={link.replace("watch", "embed")} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>}
+                {type === "youtube" && <iframe width="100%" src={convertToEmbedUrl(link)} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>}
 
                 {type === "twitter" && <EmbeddedTweet link = {link} />} 
                 {/* <blockquote className="twitter-tweet">
