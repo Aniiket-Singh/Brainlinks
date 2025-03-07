@@ -14,7 +14,7 @@ type Variants = "primary" | "secondary"
 // const variantStyles : {[key: Variants]: string} = {
 const variantStyles : Record<Variants, string> = {
     "primary" : "bg-purple-600 text-white", 
-    "secondary" : "bg-purple-300 text-purple-600"
+    "secondary" : "bg-purple-100 text-purple-600"
 }
 
 const defaultStyles = "rounded-md inline-flex items-center"

@@ -1,6 +1,6 @@
 import { PlusIcon } from "../../icons/Plusicon"
 import { ShareIcon } from "../../icons/Shareicon"
-import EmbeddedTweet from "../Tweet"
+import EmbeddedTweet from "./Tweet"
 
 interface CardProps {
     title: string,
@@ -16,7 +16,7 @@ function convertToEmbedUrl (youtubeUrl: string)  {
 
 export const Card = ({title, link, type}: CardProps) => {
     return <div> 
-        <span  className="p-4 bg-white rounded-md shadow-md border-slate-200 border-1 block max-w-240   ">
+        <span  className="p-4 bg-white rounded-md shadow-md border-slate-200 border-1 block max-w-96 min-h-60 min-w-72">
             <div className = "flex justify-between">
                 
                 <div className = "flex items-center">
@@ -32,7 +32,6 @@ export const Card = ({title, link, type}: CardProps) => {
                     </div>
                 </div>
             </div>
-
     
             <div className="pt-2"> 
                 {type === "youtube" && <iframe width="100%" src={convertToEmbedUrl(link)} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>}
@@ -42,7 +41,6 @@ export const Card = ({title, link, type}: CardProps) => {
                     <a href = "https://twitter.com/username/status/1892788269470851548"></a>
                 </blockquote> */}
             </div>
-
         </span>
     </div>
 }
