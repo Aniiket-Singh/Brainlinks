@@ -1,7 +1,12 @@
 import { CrossIcon } from "../../icons/CrossIcon";
 import { Button } from "./Button";
 
-export function CreateContentModal({open, onClose}) {
+interface ModalProps {
+    open: boolean;
+    onClose: () => void;
+}
+
+export function CreateContentModal({open, onClose}: ModalProps) {
     // const [modalOpen, setModalOpen] = useState(false); 
     // for self-managed (uncontrolled component)
 

@@ -6,7 +6,7 @@ interface ButtonProps {
     text: string;
     startIcon?: ReactElement; //Upgrade any to suitable types later
     endIcon?: ReactElement;
-    onClick?: () => void
+    onClick?: () => void 
 }
 
 type Variants = "primary" | "secondary" 
@@ -26,7 +26,7 @@ const sizeStyles = {
 }
 
 export const Button =(props: ButtonProps) => {
-    return <button className = {`${variantStyles[props.variant]} ${defaultStyles} ${sizeStyles[props.size]}`}>
+    return <button onClick={props.onClick} className = {`${variantStyles[props.variant]} ${defaultStyles} ${sizeStyles[props.size]}`}>
         {props.startIcon && <div className="pr-2">{props.startIcon} </div>} 
         {<div>{props.text}</div>} 
         {props.endIcon && <div className="pl-2">{props.endIcon} </div>}
