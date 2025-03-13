@@ -1,6 +1,7 @@
 import { useOutsideClick } from "../../hooks/useOnClickOutside";
 import { CrossIcon } from "../../icons/CrossIcon";
 import { Button } from "./Button";
+import { Input } from "./InputBox";
 
 
 interface ModalProps {
@@ -36,14 +37,3 @@ export function CreateContentModal({open, onClose}: ModalProps) {
     
 }
 
-interface InputProps {
-    placeholder: string;
-    onChange?: () => void;
-}
-
-function Input ({onChange, placeholder}: InputProps) {
-    return <div>
-        <input placeholder={placeholder} type = {"text"} className="px-4 py-2 border-1 m-2 rounded" onChange = {onChange}>
-        </input>
-    </div>
-}
