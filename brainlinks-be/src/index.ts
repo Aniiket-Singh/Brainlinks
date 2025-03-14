@@ -10,9 +10,12 @@ import { ContentModel, UserModel, LinkModel } from "./db"
 import { ExitStatus } from "typescript"
 import { userMiddleware } from "./middleware"
 
+import cors from "cors";
+
 
 const app = express();
 app.use(express.json())
+app.use(cors());
 
 app.post("/api/v1/signup", async (req: Request,res: Response) => {
     //Zod pending
