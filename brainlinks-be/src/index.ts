@@ -62,24 +62,26 @@ app.post("/api/v1/signin", async (req: Request,res: Response) =>  {
 app.post("/api/v1/content", userMiddleware, async (req: Request,res: Response) => {
     const link = req.body.link;
     const title = req.body.title;
+    const type = req.body.type;
 
     await ContentModel.create({
         link,
         title,
+        type,
         //@ts-ignore
         userId: req.userId,
         tags: []
     })
 
     res.json({
-        message: "Content Added"
+        message: "DB: Content Added in Database"
     })
 })
 
 app.get("/api/v1/content", userMiddleware, async (req:Request, res:Response)=> {
     //@ts-ignore
     const userId = req.userId
-    const content = await ContentModel.findOne({
+    const content = await ContentModel.find({
         userId
     }).populate("userId", "username")
 

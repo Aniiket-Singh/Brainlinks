@@ -3,9 +3,12 @@ import { Button } from "../components/ui/Button"
 import axios from "axios";
 import { useRef } from 'react'
 import { BACKEND_URL } from "../config";
+import { useNavigate } from "react-router-dom";
 
 
 export function Signup() {
+
+    const navigate = useNavigate();
 
     const usernameRef = useRef<HTMLInputElement>();
     const passwordRef = useRef<HTMLInputElement>();
@@ -17,8 +20,8 @@ export function Signup() {
             username,
             password
         })
-        alert("You are signed up");
-    }
+        navigate("/signin");
+}
     
     return <div className="h-screen w-screen bg-gray-200 flex items-center justify-center">
         <div className=" bg-white border border-purple-300 p-6 rounded-2xl min-w-48">

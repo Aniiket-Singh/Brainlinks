@@ -14,9 +14,10 @@ export const UserModel = model("User", userSchema)
 const contentSchema = new Schema ({
     title: { type: String, required: true},
     link: { type: String, required: true},
+    type: String,
     tags: [{type: mongoose.Types.ObjectId, ref: 'Tag'}],
     userId: {type: mongoose.Types.ObjectId, ref: 'User', required: true},
-    share: { type: Boolean, required: true}
+    share: { type: Boolean, required: false}
 })
 
 export const ContentModel = model("Content", contentSchema)
